@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <div class="clock">
+    <div class="clock-face">
+      <div class="hand handHour"></div>
+      <div class="hand handMinute"></div>
+      <div class="hand handSecond"></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    var secondHand = document.querySelector('.handSecond');
+    var minsHand = document.querySelector('.handMinute');
+    var hoursHand = document.querySelector('.handHour');
+
+
+    function setDate(second) {
+      var now = new Date();
+      var second = now.getSeconds();
+      var secondDegree = ((second / 60) * 360);
+      console.log(secondDegree)
+      secondHand.style.transform = `rotate(${secondDegree}deg)`
+
+      var mins = now.getMinutes();
+      var minsDegree = ((mins / 60) * 360) + 90;
+      minsHand.style.transform = `rotate(${minsDegree}deg)`
+
+      var hours = now.getHours();
+      var hoursDegree = ((hours / 12) * 360) + 90;
+      hoursHand.style.transform = `rotate(${hoursDegree}deg)`
+    }
+    var firstSecond = Date.now()
+    setInterval(() => {
+      setDate(firstSecond);
+    }, 1000)
+
+  </script>
+</body>
+
+</html>
