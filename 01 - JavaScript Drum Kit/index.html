@@ -73,6 +73,7 @@
     function pressDrum(e) {
       keys.forEach(key => {
         if (key.dataset.key == e.keyCode) {
+          key.classList.remove('playing');
           key.classList.add('playing');
           playSound(e.keyCode);
         }
@@ -80,6 +81,7 @@
     }
     function removeEffect(e) {
       if (e.propertyName !== 'transform') return;
+      console.log(e.target);
       e.target.classList.remove('playing');
 
     }
